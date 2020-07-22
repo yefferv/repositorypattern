@@ -1,8 +1,9 @@
 from ejemplo.modelos.connection import  StoreException, get_connection
 from sqlalchemy.orm import sessionmaker
+from ejemplo.dominio.istore import IStore
 
 
-class Store():
+class Store(IStore):
     def __init__(self):
         try:
             Session = sessionmaker(bind=get_connection())

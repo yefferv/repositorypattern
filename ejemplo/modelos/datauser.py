@@ -1,13 +1,16 @@
-from ejemplo.infraestructura.store import Store
+from ejemplo.infraestructura.datastore import DataStore
 from ejemplo.modelos.connection import  StoreException
 from ejemplo.dominio.ichildstore import IChildStore
 from .usermodel import UserModel
+import pandas as pd 
 
 
-class UserStore(Store,IChildStore):
+class DataUser(DataStore,IChildStore):
     def add_one(self, user):
         try:
-            new_user = UserModel(name=user.name)
+            new_user = [{'id':1 ,'name': user.name}]
+            print(new_user)
+            new_user = pd.DataFrame(new_user)
             self.add(new_user)            
         except Exception as e:
             print(e)
@@ -15,9 +18,10 @@ class UserStore(Store,IChildStore):
 
     def get_all(self):
         try:
-            users = self.query_all(UserModel)
-            for row in users:
-                print(row)
+            users = self.query_all(pd)
+            print(users)
+            for _,row in users.iterrows():
+                print(row['name'])
         except Exception as e:
             print(e)
             raise StoreException('error storing user')
