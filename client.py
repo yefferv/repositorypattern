@@ -1,8 +1,6 @@
 from ejemplo.modelos.userstore import  UserStore
-from ejemplo.modelos.animalstore import  AnimalStore
 from ejemplo.modelos.usermodel import UserModel
 from ejemplo.modelos.datauser import DataUser
-from ejemplo.dominio.animal import  Animal
 from ejemplo.dominio.user import  User
 from ejemplo.modelos.connection import  StoreException, Base, engine
 
